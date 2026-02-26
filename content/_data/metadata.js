@@ -1,5 +1,5 @@
 export default {
-  title: "Ripples, Jolts, Spasms",
+  title: "Claude riffs on amalgamedon",
   url: "https://amalgamedon.com/",
   language: "en",
 description: "A riff on amalgamate, from alchemical paste to corporate merger to imperial extraction, tracing how the word softened sovereignty across three centuries, landing finally in the anthropocene where language models and aircraft carriers both dissolve what they touch.",
