@@ -1,0 +1,63 @@
+import { HtmlBasePlugin, InputPathToUrlTransformPlugin } from "@11ty/eleventy";
+import { feedPlugin } from "@11ty/eleventy-plugin-rss";
+import markdownIt from "markdown-it";
+
+export default function(eleventyConfig) {
+  
+  eleventyConfig.addPassthroughCopy("content/img");
+  eleventyConfig.addPassthroughCopy("content/css");
+
+  const md = markdownIt({
+    html: true,
+    breaks: false,
+    linkify: true,
+    typographer: true
+  }).disable("code");
+
+  eleventyConfig.setLibrary("md", md);
+
+  eleventyConfig.addCollection("chapters", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("content/chapters/*.md").sort((a, b) => {
+      return (a.data.order || 0) - (b.data.order || 0);
+    });
+  });
+
+  eleventyConfig.setServerOptions({
+    showAllHosts: true,
+    port: 8086
+  });
+
+  eleventyConfig.addPlugin(HtmlBasePlugin);
+  eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
+
+  eleventyConfig.addPlugin(feedPlugin, {
+    type: "atom",
+    outputPath: "/feed/feed.xml",
+    collection: {
+      name: "chapters",
+      limit: 10,
+    },
+    metadata: {
+      language: "en",
+      title: "My Literary Work",
+      subtitle: "A description of this work",
+      base: "https://example.com/",
+      author: {
+        name: "Your Name"
+      }
+    }
+  });
+
+  return {
+    dir: {
+      input: "content",
+      includes: "includes",
+      data: "_data",
+      output: "_site"
+    },
+    templateFormats: ["md", "njk", "html"],
+    markdownTemplateEngine: "njk",
+    htmlTemplateEngine: "njk",
+    passthroughFileCopy: true
+  };
+}
