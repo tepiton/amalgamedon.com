@@ -15,7 +15,7 @@ layout: base.njk
 
 # {{ title }}
 
-<p class="drop">Let‘s talk about the word “amalgamated.” I‘m interested in its etymology and what it meant when it was first coined. we're going historical first. Greek or Arabic roots? Related to alchemy?</p>
+<p class="drop">Let’s talk about the word “amalgamated.” I’m interested in its etymology and what it meant when it was first coined. we’re going historical first. Greek or Arabic roots? Related to alchemy?</p>
 
 
 
