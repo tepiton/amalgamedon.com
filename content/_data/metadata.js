@@ -8,6 +8,5 @@ description: "A riff on amalgamate, from alchemical paste to corporate merger to
     email: "pborenstein@gmail.com",
     url: "https://pborenstein.com/"
   },
-  image: "",
-  typekit: null
+  image: ""
 }
